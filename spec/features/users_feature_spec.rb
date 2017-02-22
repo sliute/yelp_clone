@@ -16,12 +16,7 @@ feature 'User can sign in and out' do
 
   context "user signed in on the homepage" do
     before do
-      visit('/')
-      click_link('Sign up')
-      fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
-      fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign up')
+      signup_and_in
     end
 
     it "should see 'sign out' link" do
@@ -35,4 +30,12 @@ feature 'User can sign in and out' do
       expect(page).not_to have_link('Sign up')
     end
   end
+  
+  context 'user has not signed in' do
+   scenario 'user cannot create, edit, review or delete a restaurant entry if not logged in' do
+     visit('/')
+     click_link('Add a restaurant')
+     expect(page).to have_content 'You need to sign in or sign up before continuing.'
+   end
+ end
 end
