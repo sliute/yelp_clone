@@ -1,4 +1,4 @@
-class AddUserRefToReview < ActiveRecord::Migration[5.0]
+class AddUserRefToReviews < ActiveRecord::Migration[5.0]
   def change
     add_reference :reviews, :user, foreign_key: true
   end
