@@ -2,11 +2,16 @@ require 'rails_helper'
 
 feature 'restaurants' do
 
-  before { signup_and_in }
+  before do
+    signup_and_in
+  end
 
   context 'restaurants have been added' do
     before do
-      Restaurant.create(name: 'KFC')
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'KFC'
+      click_button 'Create Restaurant'
     end
 
     scenario 'display restaurants' do
@@ -19,9 +24,6 @@ feature 'restaurants' do
     context 'creating restaurants' do
         scenario 'prompts user to fill out a form, then displays new restaurant' do
           visit '/restaurants'
-          click_link 'Add a restaurant'
-          fill_in 'Name', with: 'KFC'
-          click_button 'Create Restaurant'
           expect(current_path).to eq '/restaurants'
         end
         context 'an invalid restaurant' do
@@ -38,15 +40,13 @@ feature 'restaurants' do
 
     context 'viewing restaurants' do
 
-    let!(:kfc){ Restaurant.create(name:'KFC') }
-
-    scenario 'lets a user view a restaurant' do
-     visit '/restaurants'
-     click_link 'KFC'
-     expect(page).to have_content 'KFC'
-     expect(current_path).to eq "/restaurants/#{kfc.id}"
+      scenario 'lets a user view a restaurant' do
+       visit '/restaurants'
+       click_link 'KFC'
+       expect(page).to have_content 'KFC'
+       expect(current_path).to eq "/restaurants/#{kfc.id}"
+      end
     end
-  end
 
   context 'editing restaurants' do
     before { Restaurant.create name: 'KFC', description: 'Deep fried goodness', id:1 }
