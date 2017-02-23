@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'restaurants' do
 
   before do
+    @user = User.create(email: 'test@test.com', password: 'test123')
+    @restaurant = Restaurant.create(name: 'KFC', user: @user)
     signup_and_in
   end
 
@@ -42,15 +44,14 @@ feature 'restaurants' do
 
       scenario 'lets a user view a restaurant' do
        visit '/restaurants'
+       save_and_open_page
        click_link 'KFC'
        expect(page).to have_content 'KFC'
-       expect(current_path).to eq "/restaurants/#{kfc.id}"
+       expect(current_path).to eq "/restaurants/#{@restaurant.id}"
       end
     end
 
   context 'editing restaurants' do
-    before { Restaurant.create name: 'KFC', description: 'Deep fried goodness', id:1 }
-
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
       click_link 'Edit KFC'
