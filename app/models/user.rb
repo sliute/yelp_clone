@@ -32,5 +32,7 @@ class User < ApplicationRecord
     reviewed_restaurants.include? restaurant
   end
 
-
+  def owns?(restaurant)
+    restaurants.include? restaurant
+  end
 end
