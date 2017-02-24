@@ -13,6 +13,7 @@ group :test do
   gem "rspec-collection_matchers"
 end
 
+gem 'aws-sdk'
 gem 'paperclip'
 gem 'shoulda'
 gem 'omniauth-facebook'
