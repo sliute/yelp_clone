@@ -1,24 +1,25 @@
-# README
+# Yelp Clone (5/5)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A  Ruby on Rails [Makers Academy course challenge](https://github.com/makersacademy).
 
-Things you may want to cover:
+Version 5/5.
 
-* Ruby version
+Also take a look at my contributions to versions [1](https://github.com/varvarra/yelp-clone), [2](https://github.com/sliute/yelp-haml), [3](https://github.com/mbgimot/yelp) and [4](https://github.com/Sammckay12/yelp_clone) in the respective MA student repos.
 
-* System dependencies
+## How to Use
+```
+$ git clone https://github.com/sliute/yelp_clone.git
+$ cd yelp_clone
+$ bundle
+$ bin/rake db:create
+$ bin/rake db:migrate
+$ rspec
+$ bin/rails s
+```
+Then open [http://localhost:3000](http://localhost:3000).
 
-* Configuration
+## Authors
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ben Vaughan-Jones
+* Dylan Rhodius
+* Stefan Liute
